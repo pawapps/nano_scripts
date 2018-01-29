@@ -1,24 +1,34 @@
 import json
 import os
 import requests
-import pawhelper as ph
 import datetime
 import atexit
 
 LOG='log_wallet.txt'
 PASSWORD = 'password'
-SCRIPT_LOC='/home/ubuntu/rai_node/rai.directory/'
+SCRIPT_LOC='/home/ubuntu/'
 ALIVE_MINS=60
 
 ##########
 # System
 ##
 
+def timestamp(when=None):
+    """ Returns now as string timestamp """
+    if not when:
+        when = datetime.datetime.now()
+    return '{:%Y-%m-%d %H:%M:%S.%f}'.format(when)
+
+def append_file(fn, value):
+    """ Appends value to fn """
+    with open(fn, 'a') as f:
+        f.write('{}\n'.format(value))
+
 def log(msg, stdout=True):
     """Logs
     """
-    entry = '{}: {}'.format(ph.timestamp(), msg)
-    ph.append_file(SCRIPT_LOC + LOG, entry)
+    entry = '{}: {}'.format(timestamp(), msg)
+    append_file(SCRIPT_LOC + LOG, entry)
     if stdout:
         print(entry)
 
