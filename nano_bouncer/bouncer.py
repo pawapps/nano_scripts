@@ -43,9 +43,9 @@ def last_log():
 ##
 
 def get_connection():
-    protocol = os.getenv('RAI_PROTOCOL', default='http')
-    host = os.getenv('RAI_HOST', default='[::1]')
-    port = os.getenv('RAI_PORT', default='7076')
+    protocol = os.getenv('NANO_PROTOCOL', default='http')
+    host = os.getenv('NANO_HOST', default='[::1]')
+    port = os.getenv('NANO_PORT', default='7076')
 
     return "{protocol}://{host}:{port}".format(
         protocol=protocol,
